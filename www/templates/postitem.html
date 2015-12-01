@@ -1,10 +1,5 @@
-<ion-view title="postitem" hide-nav-bar="true">
-  <ion-content class="postitem-page" scroll="false">
-            <div class="menubuttondiv">
-              <button class="menubutton" >
-              </button>
-            </div>
-
+<ion-view>
+  <ion-content class="postitem-page transparentenable" scroll="false">
             <div class="diviteminfo">
                   <div class="itemname">
                     <input type="itemname" class="itemnameplaceholder" placeholder="Name of the item" ng-model="data.itemname">
@@ -25,7 +20,7 @@
                   <div class="numberofslots">
                     <div>
                         <select ng-model="data.category1" class="custom-option1" >
-                            <option value="" disabled selected><font color="#b2b2b2">Number of slots</font></option>
+                            <option value="" disabled selected><font color="#b2b2b2 !important">Number of slots</font></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

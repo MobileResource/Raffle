@@ -15,6 +15,24 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages', 'ngImgCrop', 'ngO
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+                       
+    var clientIDs = {
+        "PayPalEnvironmentProduction": "AbezvQ3K9DRF60uib2WlT6VXwBDvlXjqZ9RxocjGcQdjolPN2CYaTZxPO8NO1PJj_V8nW3bEypjQHjeD",
+        "PayPalEnvironmentSandbox": "AbezvQ3K9DRF60uib2WlT6VXwBDvlXjqZ9RxocjGcQdjolPN2CYaTZxPO8NO1PJj_V8nW3bEypjQHjeD"
+    };
+    PayPalMobile.init(clientIDs, function(){
+        // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
+        PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", function(){
+            var config = new PayPalConfiguration({
+               merchantName: "My test shop",
+               merchantPrivacyPolicyURL: "https://mytestshop.com/policy",
+               merchantUserAgreementURL: "https://mytestshop.com/agreement"
+            });
+                                     
+            return config;
+        },
+        function(){});
+    });
   });
 })
 
@@ -29,6 +47,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages', 'ngImgCrop', 'ngO
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
   })
+
+  .state('forget', {
+    url: '/forget',
+    templateUrl: 'templates/forgetpassword.html',
+    controller: 'ForgetCtrl'
+  })
+
   .state('signup', {
     url: '/signup',
     templateUrl: 'templates/signup.html',
@@ -70,6 +95,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages', 'ngImgCrop', 'ngO
       }
     })
 
+  .state('sidemenu.payment', {
+      url: "/payment",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/payment.html",
+          controller: 'PaymentCtrl'
+        }
+      }
+    })
+
   .state('app.profile', {
       url: "/profile",
       views: {
@@ -105,12 +140,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages', 'ngImgCrop', 'ngO
         templateUrl: 'templates/fullscreen.html',
         controller: 'FullScreenCtrl'
   });
-  // $urlRouterProvider.otherwise('/login');
-  $urlRouterProvider.otherwise('/sidemenu/itempreview');
+  $urlRouterProvider.otherwise('/login');
+//  $urlRouterProvider.otherwise('/sidemenu/payment');
 })
 
 .run(function ($rootScope, $state) {
   $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
     
   });
-})
+});

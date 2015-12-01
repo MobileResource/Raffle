@@ -1,4 +1,4 @@
-<ion-view title="itempreview" hide-nav-bar="true">
+<ion-view title="itempreview" cache-view = "false">
     <ion-header-bar align-title="center" class="itempreviewbar bar-assertive">
         <div class="itempreviewheaderbar">
             <button class="previewmenubutton" ng-click="doSomething()"></button>
@@ -10,56 +10,78 @@
   <ion-content class="itempreview-page" scroll="false">
         <div class="itempreviewphoto">
             <ion-slide-box active-slide="myActiveSlide">
-                <!-- <ion-slide ng-repeat="item in cameraImages"> -->
-                <ion-slide >
-                    <div class="slideDiv slide1" >
-                            <!-- <img class="slideImage1" ng-src="{{item}}" /> -->
-                            <!-- <img class="slideImage1" ng-src="../img/1.jpg"/> -->
-                            <img class="slideImage1" ng-src="../img/3.jpg"/>
-                    </div>
+                <ion-slide ng-repeat="item in cameraImages">
+                    <img class="slideImage1" ng-src="{{item}}" />
                 </ion-slide>
-
-                <ion-slide >
-                    <div class="slideDiv" >
-                            <!-- <img class="slideImage1" ng-src="{{item}}" /> -->
-                            <!-- <img class="slideImage1" ng-src="../img/1.jpg"/> -->
-                            <img class="slideImage1" ng-src="../img/2.jpg"/>
-                    </div>
-                </ion-slide>
-
-                <ion-slide >
-                    <div class="slideDiv" >
-                            <!-- <img class="slideImage1" ng-src="{{item}}" /> -->
-                            <!-- <img class="slideImage1" ng-src="../img/1.jpg"/> -->
-                            <img class="slideImage1" ng-src="../img/3.jpg"/>
-                    </div>
-                </ion-slide>
-
-<!--                     <ion-slide>
-                        <div class="box blue"><h1>BLUE</h1></div>
-                      </ion-slide>
-                      <ion-slide>
-                        <div class="box yellow"><h1>YELLOW</h1></div>
-                      </ion-slide>
-                      <ion-slide>
-                        <div class="box pink"><h1>PINK</h1></div>
-                      </ion-slide>
- -->
-
-
-           </ion-slide-box>
+            </ion-slide-box>
         </div>
 
         <div class="itempreviewdetail">
+            <div class="itempreviewnotdescription">
+                    <div class="descriptiondiv1">
+                            <div class="previewitemname">
+                                <font name="Myriad Pro" size="3" color="black"><b>Item name</b></font>
+                            </div>
+
+                            <div class="previewproperty">
+                                <font size="2px" color="grey"><b>15inc,Retina display</b></font>
+                            </div>
+
+                    </div>
+
+                    <div class="descriptiondiv2">
+                            <div class="previewprice" style="text-align:right">
+                                <font size="3px" color="#ef5843"><b>$15</b></font>
+                            </div>
+
+                            <div class="previewcount" style="text-align:right">
+                                <font size="2px" color="#ef5843">512 available</font>
+                            </div>
+
+                    </div>
+
+            </div>
+
+            <div class="itempreviewdescription" style="overflow:auto;">
+                <font color="gray" size="2px"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</font>
+            </div>
 
         </div>
 
         <div class="itempreviewtimecount">
+            <div class="daypartdiv">
+                <div class="daynumber">
+                    <font size="10px" color="#ef5843"><b>14</b></font>
+                </div>
 
+                <div class="daytext">
+                    <font size="2px" color="#ef5843" ><b>DAYS</b></font>
+                </div>
+            </div>
+            <div class="hourpartdiv">
+                <div class="hournumber">
+                    <font size="10px" color="#ef5843" ><b>07</b></font>
+                </div>
+
+                <div class="hourtext">
+                    <font size="2px" color="#ef5843" ><b>Hrs</b></font>
+                </div>
+            </div>
+            <div class="minpartdiv">
+                <div class="minnumber">
+                    <font size="10px" color="#ef5843" ><b>33</b></font>
+                </div>
+
+                <div class="mintext">
+                    <font size="2px" color="#ef5843" ><b>Min</b></font>
+                </div>
+            </div>
         </div>
 
-        <div class="itempreviewbutton">
-
+        <div class="itempreviewbutton" style=" text-align: center;">
+            <button class="btnbuyraffle" ng-click="goToBuyRaffle()">
+                BUY RAFFLE
+            </button>
         </div>
 
   </ion-content>

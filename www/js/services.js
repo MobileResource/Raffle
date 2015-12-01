@@ -54,6 +54,7 @@ angular.module('starter')
                             });
 
                             $rootScope.user_id = userData.id;
+                            $rootScope.username = userData.username;
                             storeUserCredentials(name, pw);
                             $state.go("sidemenu.category");
                           }
@@ -266,9 +267,6 @@ var signup = function(username, email, phonenumber, pw) {
         var params = {};
         params.userid = 1;
         params.categoryname = categoryname;
-        // params.userid = userid;
-        // params.categoryname = categoryname;
-
         params.todaydate = todaydate;
         params.itemname = itemname;
         params.itemdescription = itemdescription;
@@ -281,20 +279,10 @@ var signup = function(username, email, phonenumber, pw) {
         console.log(imgURI);
         ft.upload(imgURI, encodeURI(server_url),
               function(result) {
-                  // console.log(result.response);
-                  // alert("Success: " + result.response);
                   AuthService.hide_spinner();
+                  $rootScope.itemname = itemname;
+                  $rootScope.priceperslot = priceperslot;
                   $state.go('sidemenu.itempreview');
-                  // $state.go('sidemenu.itempreview');
-                  // console.log("item preview page checking...")
-                  // var popup = $ionicPopup.alert({
-                  //   title: 'Success',
-                  //   template: 'Uploaded successfully.'
-                  // });
-                  // popup.then(function(res) {
-                  //            $rootScope.refreshList();
-                  //            $state.go('sidemenu.itempreview');
-                  //            });                      
         console.log("Result: " + JSON.stringify(result))
               },
               function(error) {

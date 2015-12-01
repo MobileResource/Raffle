@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('LoginCtrl', function($scope, AuthService, $state, $ionicPopup, ngFB) {
+.controller('LoginCtrl', function($scope, AuthService, $state, $ionicPopup, ngFB, $rootScope) {
         $scope.user = {
           username: "lijin",
           password: "sheqjrh1991"
@@ -21,8 +21,11 @@ angular.module('starter')
         };
         
         $scope.gotoSignup = function() {
-
           $state.go('signup');
+        };
+
+        $scope.onForgetPassword = function() {
+          $state.go('forget');
         };
 
         $scope.fbLogin = function() {
@@ -30,10 +33,31 @@ angular.module('starter')
             function (response) {
                 if (response.status === 'connected') {
                     console.log('Facebook login succeeded');
+                    console.log(response);
+
+                   ngFB.api({
+                        path: '/me',
+                        params: {fields: 'id,name'}
+                    }).then(
+                        function (user) {
+                            $scope.user = user;
+                            console.log("myvalue = " + $scope.user);
+                            console.log("myvalue = " + JSON.stringify($scope.user));
+                            $rootScope.username = $scope.user.name;
+                            $rootScope.user_id = $scope.user.id;
+
+                            console.log($rootScope.username);
+                            console.log($rootScope.user_id);
+                        },
+                        function (error) {
+                        alert('Facebook error: ' + error.error_description);
+                    });
+
                     $state.go('sidemenu.category');
                 } else {
                     alert('Facebook login failed');
                 }
+
             });
           };
 })
@@ -63,6 +87,61 @@ angular.module('starter')
     };
 })
 
+.controller('ForgetCtrl', function($scope, AuthService, $ionicHistory, $state, $ionicPopup) {
+  //   $scope.resetPassword = function(data) {
+  //     console.log("1111111");
+  //     var email = {
+  //       "to" : "lijin1991820@gmail.com",
+  //       "from" : "test@raffle.com",
+  //       "subject" : "Test verified mail",
+  //       "html" : "<h1>Your verification code is 12345</h1>",
+  //       "text" : "Your verification code is 12345"
+  //     };
+
+  //     sendgrid.send(email, function(result){
+  //           // openSuccessDialog();
+  //       }, function(error){
+  //           // openFailureDialog();
+  //     });
+  //   };
+ 
+  // var openSuccessDialog = function() {
+  //     var myPopup = $ionicPopup.show({
+  //         template: 'Your message has been sent and a member of our team will be in touch.',
+  //         title: 'Success!',
+  //         cssClass: 'email-popup',
+  //         buttons: [
+  //             { text: 'CLOSE' }
+  //         ]
+  //     });
+  //       myPopup.then(function(res) {
+  //         console.log('Tapped!', res);
+  //       });
+  //   }
+
+  //   var openFailureDialog = function() {
+  //     var myPopup = $ionicPopup.show({
+  //         template: 'Your message has been failed to send.',
+  //         title: 'Failure!',
+  //         cssClass: 'email-popup',
+  //         buttons: [
+  //             { text: 'CLOSE' }
+  //         ]
+  //     });
+  //       myPopup.then(function(res) {
+  //         console.log('Tapped!', res);
+  //       });
+  //   }
+
+    $scope.resetPassword = function(data) {
+      console.log(data.retrivemailtext);
+    };
+
+    $scope.gotoLogin = function(data) {
+        $state.go('login');
+    };
+})
+
 .controller('ProfileCtrl', function ($scope, ngFB) {
     ngFB.api({
         path: '/me',
@@ -77,9 +156,12 @@ angular.module('starter')
         });
 })
 
-.controller('SideMenuCtrl', function($scope, $state, $rootScope, $ionicPopup) {
+.controller('SideMenuCtrl', function($scope, $state, $rootScope, $ionicPopup, $ionicSideMenuDelegate, ngFB) {
+  // console.log("slidemenu come..");
   $scope.goLogout = function() {
       console.log($rootScope.user_id);
+      // $rootScope.user_id = null;
+      // $rootScope.username = null;
       var confirmPopup = $ionicPopup.confirm({
              title: 'Confirm',
              template: 'Do you want to log out?',
@@ -92,9 +174,15 @@ angular.module('starter')
           }
       });
   };
+
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
 })
 
-.controller('CategoryCtrl', function($scope, $state, AuthService, $ionicHistory, $ionicPopup, $rootScope, $timeout, $ionicSideMenuDelegate) {
+.controller('CategoryCtrl', function($scope, $state, AuthService, $ionicHistory, $ionicPopup, $rootScope, $timeout, $ionicSideMenuDelegate, ngFB) {
+  console.log("slidemenu come..");
     $scope.data = {}
     $scope.goLogout = function() {
       console.log($rootScope.user_id);
@@ -145,10 +233,23 @@ angular.module('starter')
       $rootScope.categoryname = "Deals/Gift";
        $state.go('sidemenu.postitem');
     };
+
 })
 
 .controller('PostItemCtrl', function($scope, $state, $rootScope, $ionicHistory, $cordovaCamera, DataService, BACKEND_URL, $ionicPopup, AuthService, UploadService) {
   $scope.goLogout = function() {
+      var confirmPopup = $ionicPopup.confirm({
+             title: 'Delete',
+             template: 'Are you sure you want to delete this item?',
+     });
+      confirmPopup.then(function(res) {
+          if(res) {
+            console.log('You are not sure');
+          } else {
+            console.log('You are not sure');
+          }
+      });
+
       $state.go('login');
   };
 
@@ -216,7 +317,39 @@ angular.module('starter')
 })
 
 .controller('ItemPreviewCtrl', function($scope, $state, $rootScope, $ionicHistory, $cordovaCamera, DataService, BACKEND_URL, $ionicPopup, AuthService, UploadService) {
-  console.log("asldajsldfasldkfalsdkjfalskdjflasdkjflaskdfjlaskdjflaskdjflaksdjf");
+  console.log("ItemPreview controller");
+  
+    $scope.goToBuyRaffle = function(){
+      $state.go('sidemenu.payment');
+    };
+
+})
+
+.controller('PaymentCtrl', function($scope, $state, $rootScope, $ionicHistory, $cordovaCamera, DataService, BACKEND_URL, $ionicPopup, AuthService, UploadService) {
+  console.log("Payment controller");
+
+    $scope.AddCart = function(){
+      console.log("add cart button clicked!!!");
+    };
+
+    $scope.createPayment = function() {
+        alert($rootScope.priceperslot + $rootScope.itemname);
+        var paymentDetails = new PayPalPaymentDetails($rootScope.priceperslot, "0.00", "0.00");
+        var payment = new PayPalPayment($rootScope.priceperslot, "USD", $rootScope.itemname, "Sale",paymentDetails);
+            return payment;
+        }
+            
+    $scope.selectedPaypal = function(){
+            
+            PayPalMobile.renderSinglePaymentUI($scope.createPayment(), function( res ){
+                                                alert(JSON.stringify(res))
+                                               },
+                                               function(){
+                                               
+                                               });
+    };
+
+
 })
 
 .controller('SubListCtrl', function($scope, $state, $rootScope, $ionicHistory, $cordovaCamera, DataService, BACKEND_URL, $ionicPopup, AuthService) {

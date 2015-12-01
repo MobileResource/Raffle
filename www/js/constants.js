@@ -17,8 +17,8 @@ angular.module('starter')
 
 .constant('BACKEND_URL', {
   // baseURL: 'http://myfabella.com/Raffle/',
-  baseURL: 'http://192.168.0.32/Raffle/',
-  // baseURL: 'http://li1364-120.members.linode.com/Raffle/',
+  // baseURL: 'http://192.168.0.32/Raffle/',
+  baseURL: 'http://li1364-120.members.linode.com/Raffle/',
   loginURL: 'login.php',
   signupURL: 'signup.php',
   uploadURL: 'upload.php',

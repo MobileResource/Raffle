@@ -2942,7 +2942,7 @@ a.subdued {
     background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
     color: #444; }
     .bar.bar-light .title, .bar.bar-light .bar-light.bar {
-      color: #444; }
+      color: rgba(0, 0, 0, 0); }
     .bar.bar-light.bar-footer, .bar-light.bar-footer.bar {
       background-image: linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%); }
   .bar.bar-stable, .bar-stable.bar {
@@ -5022,24 +5022,24 @@ a.item-content {
   z-index: 1;
   width: 100%;
   height: 15px;
-  text-align: center; }
+  text-align: center; 
+}
   .slider-pager .slider-pager-page {
     display: inline-block;
     margin: 0px 3px;
     width: 15px;
-    color: #000;
+    color: #ef5843;
     text-decoration: none;
-    opacity: 0.3; }
-    .slider-pager .slider-pager-page.active {
-      -webkit-transition: opacity 0.4s ease-in;
-      -moz-transition: opacity 0.4s ease-in;
-      transition: opacity 0.4s ease-in;
-      opacity: 1; }
+    opacity: 0.3; 
+  }
+    
+  .slider-pager .slider-pager-page.active {
+    -webkit-transition: opacity 0.4s ease-in;
+    -moz-transition: opacity 0.4s ease-in;
+    transition: opacity 0.4s ease-in;
+    opacity: 1; 
+  }
 
-/**
- * Split Pane
- * --------------------------------------------------
- */
 .split-pane {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5053,7 +5053,8 @@ a.item-content {
   -moz-align-items: stretch;
   align-items: stretch;
   width: 100%;
-  height: 100%; }
+  height: 100%; 
+}
 
 .split-pane-menu {
   -webkit-box-flex: 0;
@@ -6009,14 +6010,15 @@ progress {
         color: #fff; }
   .button.button-positive, .button-positive.button {
     border-color: #145fd7;
-    background-color: #4a87ee;
+    background-color: #ef5843;
+    border-radius: 8px;
     color: #fff; }
     .button.button-positive:hover, .button-positive.button:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-positive.active, .button-positive.active.button, .button.button-positive.activated, .button-positive.activated.button {
       border-color: #145fd7;
-      background-color: #145fd7;
+      background-color: #ef5843;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
     .button.button-positive.button-clear, .button-positive.button-clear.button {
       border-color: transparent;
@@ -7793,6 +7795,7 @@ a.button {
 
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
   /*height: 50px;*/
+  background: transparent;
  }
   .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
     margin-top: -15px !important; }
@@ -9338,23 +9341,117 @@ ul.authorConnectIcons li {
       width: 100%;
       /*margin: 0% auto 30px auto;*/
       z-index: 999;
-      background-color: blue;
+      /*background-color: blue;*/
       height: 150px;
+      border-bottom: solid 1px gray;
+    }
+
+   .itempreview-page .itempreviewnotdescription {
+      width: 95%;
+      z-index: 999;
+      margin: 0px auto;
+    }
+
+   .itempreview-page .itempreviewdescription {
+      z-index: 999;
+      clear: both;
+      padding: 10px;
+      height: 100px;
+    }
+
+   .itempreview-page .descriptiondiv1 {
+      width: 50%;
+      z-index: 999;
+      float: left;
+    }
+
+   .itempreview-page .descriptiondiv2 {
+      width: 50%;
+      z-index: 999;
+      float: right;
+    }
+
+   .itempreview-page .previewitemname {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .previewproperty {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .previewprice {
+      width: 90%;
+      z-index: 999;
+    }
+
+   .itempreview-page .previewcount {
+      width: 90%;
+      z-index: 999;
     }
 
    .itempreview-page .itempreviewtimecount {
-      width: 100%;
-      /*margin: 0% auto 30px auto;*/
+      width: 65%;
+      margin: 10% auto -10px auto;
       z-index: 999;
-      background-color: yellow;
       height: 80px;
+    }
+
+   .itempreview-page .daypartdiv {
+      width: 33%;
+      z-index: 999;
+      float: left;
+      text-align: center;
+    }
+
+   .itempreview-page .daynumber {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .daytext {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .hourpartdiv {
+      width: 33%;
+      z-index: 999;
+      float: left;
+      text-align: center;
+    }
+
+   .itempreview-page .hournumber {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .hourtext {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .minpartdiv {
+      width: 33%;
+      z-index: 999;
+      float: right;
+      text-align: center;
+    }
+
+   .itempreview-page .minnumber {
+      width: 100%;
+      z-index: 999;
+    }
+
+   .itempreview-page .mintext {
+      width: 100%;
+      z-index: 999;
     }
 
    .itempreview-page .itempreviewbutton {
       width: 100%;
-      /*margin: 0% auto 30px auto;*/
       z-index: 999;
-      background-color: green;
       height: 80px;
     }
 
@@ -9373,10 +9470,192 @@ ul.authorConnectIcons li {
     }
 
     .itempreviewbar {
-      color: #ef5843; 
+      /*color: #ef5843; */
+      background-color: #ef5843 !important;
     }
 
     .previewtitle {
       font-size: 20px; 
       text-align: center;
     }
+
+
+  .navigationbackground {
+
+  }
+
+  .bar.bar-light {
+    background: none;
+  }
+.scroll-content {
+  overflow: visible !important;
+}
+
+ .transparentenable{
+    top: 0px !important;
+  }
+
+ .slidemenubutton{
+      color: white;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      background: url('../img/menubutton.png') no-repeat center;    
+      background-size: contain;  
+      border: none;
+  }
+
+ .btnbuyraffle{
+      color: white;
+      /*margin: 5% auto;*/
+      padding: -1px;
+      font-size: 18px;
+      width: 60% ;
+      z-index: 2; 
+      background-color: #ef5843;
+      border: none;
+      border-radius: 5px;
+}
+
+  .payment-page {
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../img/bgpayment.png");
+   }
+
+    .addcartbutton{
+      color: white;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      background: url('../img/btncart.png') no-repeat center;    
+      background-size: contain;  
+      border: none;
+  }
+
+   .payment-page .paymentfirstdiv {
+      width: 100%;
+      /*height: 140px;*/
+      border: none;
+      /*margin: 50% auto 30% auto;*/
+    }
+
+   .payment-page .paymentdetail1 {
+      width: 100%;
+      border: none;
+    }
+     
+   .payment-page .paymentdetail2 {
+      width: 100%;
+      border: none;
+      float: right;
+    }
+
+   .payment-page .paypallabel {
+      width: 100%;
+      border: none;
+      margin: 80% auto 0% auto;
+    }
+
+   .payment-page .mastercardlabel {
+      width: 100%;
+    }        
+
+   .payment-page .directbanktransfer {
+      width: 100%;
+      border: none;
+      margin: 2% auto;
+    }
+
+   .payment-page .directlabel {
+      width: 66%;
+      border: none;
+      display: inline-block;
+      text-align: left;
+      line-height: 13px;
+    }        
+
+ .btnpaypal{
+      color: white;
+      margin: 0% auto;
+      padding: -1px;
+      font-size: 18px;
+      width: 60% ;
+      z-index: 2; 
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+}
+
+   .payment-page .imagediv {
+      /*float: left;*/
+      width: 15%;
+      display: inline-block;
+    }        
+
+ .btnpostraffle{
+      color: white;
+      margin: 5% auto;
+      padding: -1px;
+      font-size: 18px;
+      width: 60% ;
+      z-index: 2; 
+      background-color: #ef5843;
+      border: none;
+      border-radius: 5px;
+}
+
+  .forget-page{
+    background-image: url('../img/splash.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .forget-page .retrivemail{
+    width: 80%;
+    margin: 0% auto;
+  }
+
+  .forget-page .usermailaddress{
+    background: rgba(250, 250, 250, 0.3);
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    margin: 5% auto;
+    width: 80%;
+  }
+
+  .forget-page .forgetlabel{
+    color: white;
+    text-align: center;
+    margin: 65% auto;
+  }
+
+  .forget-page .btnresetpassword{
+    /*color: white;*/
+    width: 50%;
+    text-align: center;
+    margin: 0% auto;
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+  }
+
+  .forget-page .btngotologin{
+    /*color: white;*/
+    width: 60%;
+    text-align: center;
+    margin: 60% auto;
+    background-color: transparent;
+/*    border-style: solid;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+*/  
+    border: none;
+  }

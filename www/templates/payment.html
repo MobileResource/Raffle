@@ -1,0 +1,54 @@
+<ion-view title = "Payment" cache-view = "false">
+          <ion-nav-buttons side="right">
+              <button class="addcartbutton" ng-click="AddCart()">
+              </button>
+          </ion-nav-buttons>
+
+  <ion-content class="payment-page transparentenable" scroll="false">
+        <div class="paymentfirstdiv">
+            <div class="paymentdetail1">
+                <div class="paypallabel">
+                  
+                    <button class="btnpaypal" ng-click="selectedPaypal()">
+                        <img src="img/iconpaypal.png" style="width:80px;margin-right: 35%;">
+                    </button>
+                  
+                </div>
+
+                <div class="mastercardlabel">
+                    <div class="imagediv">
+                        <img class = "image1" src="img/iconmastercard.png" width="100%">
+                    </div>
+
+                    <div class="imagediv">
+                        <img class = "image2" src="img/iconvisa.png" width="100%">
+                    </div>
+
+                    <div class="imagediv">
+                        <img class = "image3" src="img/iconexpress.png" width="100%">
+                    </div>
+
+                    <div class="imagediv">
+                        <img class = "image4" src="img/iconmastercard.png" width="100%">
+                    </div>
+                </div>
+            </div>
+
+            <div class="paymentdetail2">
+                <div class="directbanktransfer">
+                  <font size="4px" color="gray">Direct bank transfer</font>
+                  
+                </div>
+
+                <div class="directlabel">
+                  <font color="gray" size="2px"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</font>
+                </div>
+            </div>
+
+            <button class="btnpostraffle" ng-click="goToBuyRaffle()">
+                POST RAFFLE
+            </button>
+
+        </div>
+  </ion-content>
+</ion-view>
